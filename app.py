@@ -36,7 +36,8 @@ def get_llm_response(user_input: str, expert_type: str) -> str:
         SystemMessage(content=system_prompt),
         HumanMessage(content=user_input)
     ]
-    response = chat(messages)
+    # 修正: predict_messages メソッドを使用
+    response = chat.predict_messages(messages)
     return response.content
 
 #st.set_page_config(page_title="専門家AIアシスタント", page_icon="💬")
