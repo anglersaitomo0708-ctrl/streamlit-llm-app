@@ -1,6 +1,3 @@
-from dotenv import load_dotenv
-load_dotenv()
-
 #条件の整理
 #画面に入力フォームを１つ用意
 #入力フォームから送信したテキストをLangChainを使ってLLMにプロンプトとして
@@ -15,7 +12,9 @@ load_dotenv()
 #Streamlit Community Cloudにデプロイすることを想定してコードを書く
 #デプロイするときのPythonのバージョンは「3.11」を選択する
 
-#必要な環境設定をインポート
+from dotenv import load_dotenv
+load_dotenv()
+
 import streamlit as st
 from langchain_openai import ChatOpenAI
 from langchain_core.messages import SystemMessage, HumanMessage
