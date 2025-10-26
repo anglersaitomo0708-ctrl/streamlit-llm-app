@@ -32,13 +32,14 @@ def get_llm_response(user_input: str, expert_type: str) -> str:
         system_prompt = "あなたは質問者に丁寧に応対する優秀なアシスタントです。"
 
     chat = ChatOpenAI(model="gpt-4o-mini", temperature=0.7)
+    # 修正: messages を正しい形式に変更
     messages = [
         SystemMessage(content=system_prompt),
         HumanMessage(content=user_input)
     ]
     # 修正: generate メソッドを使用
-    response = chat.generate(messages)
-    return response.content
+    response = chat.generate([messages])  # リストのリストとして渡す
+    return response.generations[0][0].text  # 正しいプロパティを参照
 
 #st.set_page_config(page_title="専門家AIアシスタント", page_icon="💬")
 
